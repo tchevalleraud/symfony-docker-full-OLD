@@ -61,6 +61,14 @@ jobs:
                   cd ./prod/
                   make server-start
                   sleep 60
+            - name: Database deployment
+              run: |
+                  cd ./prod/
+                  make doctrine-database-create
+            - name: Cache clear
+              run: |
+                  cd ./prod/
+                  make cache-clear
     tests:
         runs-on: [production]
         needs: [deploy]

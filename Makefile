@@ -31,6 +31,9 @@ help:
 # ------------------------
 # Command
 # ------------------------
+cache-clear:
+	$(sy) cache:clear
+
 docker-build:
 	$(dc) pull --ignore-pull-failures
 	$(dc) build
@@ -44,6 +47,11 @@ server-stop:
 # ------------------------
 # Dependances
 # ------------------------
+doctrine-database-create:
+	$(sy) doctrine:database:create -c mysql --if-not-exists
+	$(sy) doctrine:database:create -c local
+	$(sy) doctrine:schema:update --force --em mysql
+
 vendor/autoload.php:
 	$(php) composer update
 	touch vendor/autoload.php
