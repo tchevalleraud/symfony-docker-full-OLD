@@ -8,6 +8,7 @@ frontoffice:
         en: "/en/"
         fr: "/fr/"
     resource: ../../src/UI/FrontOffice
+    type: annotation
 
 kernel:
     resource: ../../src/Kernel.php
