@@ -22,6 +22,8 @@ services:
             args:
                 USER_ID: ${USER_ID}
                 GROUP_ID: ${GROUP_ID}
+        environment:
+            APP_ENV: dev
         links:
           - bdd
         volumes:
