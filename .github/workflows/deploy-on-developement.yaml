@@ -19,9 +19,21 @@ jobs:
     build:
         runs-on: [development]
         needs: [init]
+        steps:
+            - name: Build docker image
+              run: |
+                  cd ./dev/
     deploy:
         runs-on: [development]
         needs: [build]
+        steps:
+            - name: Start docker environment
+              run: |
+                  cd ./dev/
     tests:
         runs-on: [development]
         needs: [deploy]
+        steps:
+            - name: UnitTest
+              run: |
+                  cd ./dev/
