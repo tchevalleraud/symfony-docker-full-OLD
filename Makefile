@@ -29,10 +29,16 @@ help:
 # ------------------------
 # Command
 # ------------------------
+docker-build:
+	$(dc) pull --ignore-pull-failures
+	$(dc) build
 
 # ------------------------
 # Dependances
 # ------------------------
+vendor/autoload.php:
+	$(php) composer update
+	touch vendor/autoload.php
 
 # ------------------------
 # Tests
