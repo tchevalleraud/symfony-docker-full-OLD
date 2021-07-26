@@ -36,10 +36,10 @@ docker-build:
 	$(dc) build
 
 server-start:
-	$(dc) -p $(app_dir) up -d
+	$(dc) -p $(app_dir)_$(APP_ENV) up -d
 
 server-stop:
-	$(dc) -p $(app_dir) down
+	$(dc) -p $(app_dir)_$(APP_ENV) down
 
 # ------------------------
 # Dependances
