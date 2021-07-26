@@ -1,6 +1,13 @@
-controllers:
-    resource: ../../src/Controller/
+_default:
+    resource: ../../src/UI/_default
     type: annotation
+
+frontoffice:
+    name_prefix: frontoffice.
+    prefix:
+        en: "/en/"
+        fr: "/fr/"
+    resource: ../../src/UI/FrontOffice
 
 kernel:
     resource: ../../src/Kernel.php
