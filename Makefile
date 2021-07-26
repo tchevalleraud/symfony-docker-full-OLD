@@ -1,8 +1,8 @@
 -include .env
 -include .env.local
 
-user    := $(sheel id -u)
-group   := $(sheel id -g)
+user    := $(shell id -u)
+group   := $(shell id -g)
 
 ifeq ($(APP_ENV), prod)
 	dc := USER_ID=$(user) GROUP_ID=$(group) docker-compose -f docker-compose.prod.yaml
