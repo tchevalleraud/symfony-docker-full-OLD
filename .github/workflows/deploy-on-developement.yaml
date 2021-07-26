@@ -1,0 +1,27 @@
+name: Deploy on development server
+on:
+    push:
+        branches: [master, develop]
+jobs:
+    init:
+        runs-on: [development]
+        steps:
+            - name: Copy file on server
+              uses: actions/checkout@v2
+              with:
+                  path: ./dev/
+            - name: Update environment
+              run: |
+                  cd ./dev/
+                  rm .env
+                  touch .env
+                  echo "APP_ENV=dev" >> .env
+    build:
+        runs-on: [development]
+        needs: [init]
+    deploy:
+        runs-on: [development]
+        needs: [build]
+    tests:
+        runs-on: [development]
+        needs: [deploy]
