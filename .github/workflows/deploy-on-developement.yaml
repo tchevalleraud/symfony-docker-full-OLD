@@ -23,9 +23,10 @@ jobs:
                   git pull
             - name: Deploy new project
               if: steps.check-directory.outputs.exist != 'true'
-              uses: actions/checkout@v2
-              with:
-                  path: ./dev/
+              run: |
+                  git clone git@github.com:tchevalleraud/symfony-docker-full.git
+                  mv symfony-docker-full/ dev/
+                  cd ./dev/
             - name: Update environment
               run: |
                   cd ./dev/
