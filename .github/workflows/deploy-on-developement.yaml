@@ -53,6 +53,8 @@ jobs:
             - name: Start docker environment
               run: |
                   cd ./dev/
+                  make server-start
+                  sleep 60
     tests:
         runs-on: [development]
         needs: [deploy]

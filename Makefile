@@ -33,6 +33,12 @@ docker-build:
 	$(dc) pull --ignore-pull-failures
 	$(dc) build
 
+server-start:
+	$(dc) up -d
+
+server-stop:
+	$(dc) down
+
 # ------------------------
 # Dependances
 # ------------------------
