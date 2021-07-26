@@ -1,18 +1,29 @@
 doctrine:
     dbal:
-        url: '%env(resolve:DATABASE_URL)%'
-
-        # IMPORTANT: You MUST configure your server version,
-        # either here or in the DATABASE_URL env var (see .env file)
-        #server_version: '13'
+        default_connection: mysql
+        connections:
+            mysql:
+                url: '%env(resolve:DATABASE_MYSQL_URL)%'
+            local:
+                url: '%env(resolve:DATABASE_LOCAL_URL)%'
     orm:
-        auto_generate_proxy_classes: true
-        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
-        auto_mapping: true
-        mappings:
-            App:
-                is_bundle: false
-                type: annotation
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: App
+        default_entity_manager: mysql
+        entity_managers:
+            mysql:
+                connection: mysql
+                mappings:
+                    default:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Domain/_mysql'
+                        prefix: 'App\Domain\_mysql'
+                        alias: App
+            local:
+                connection: local
+                mappings:
+                    default:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Domain/_local'
+                        prefix: 'App\Domain\_local'
+                        alias: App
