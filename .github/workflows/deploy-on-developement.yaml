@@ -6,7 +6,23 @@ jobs:
     init:
         runs-on: [development]
         steps:
-            - name: Copy file on server
+            - name: Check directory exist
+              id: check-directory
+              continue-on-error: true
+              run: |
+                  cd ./dev/
+                  echo ::set-output name=exist::true
+            - name: Update exist project
+              if: steps.check-directory.outputs.exist == 'true'
+              run: |
+                  cd ./dev/
+                  git checkout develop
+                  git add .
+                  git reset --hard
+                  git fetch origin --tags
+                  git pull
+            - name: Deploy new project
+              if: steps.check-directory.outputs.exist != 'true'
               uses: actions/checkout@v2
               with:
                   path: ./dev/
