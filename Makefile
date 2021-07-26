@@ -1,6 +1,8 @@
 -include .env
 -include .env.local
 
+app_dir := tchevalleraud_symfony-docker-full
+
 user    := $(shell id -u)
 group   := $(shell id -g)
 
@@ -34,10 +36,10 @@ docker-build:
 	$(dc) build
 
 server-start:
-	$(dc) up -d
+	$(dc) -p $(app_dir) up -d
 
 server-stop:
-	$(dc) down
+	$(dc) -p $(app_dir) down
 
 # ------------------------
 # Dependances
