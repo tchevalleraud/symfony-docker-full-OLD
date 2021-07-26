@@ -1,5 +1,14 @@
 version: '3.3'
 services:
+    adminer:
+        environment:
+            ADMINER_DESIGN: pepa-linha
+            ADMINER_DEFAULT_SERVER: bdd
+        image: adminer
+        links:
+          - bdd
+        ports:
+          - 10102:8080
     bdd:
         environment:
             MYSQL_ROOT_PASSWORD: "password"
