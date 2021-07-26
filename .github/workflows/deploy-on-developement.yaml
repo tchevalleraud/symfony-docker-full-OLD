@@ -46,12 +46,6 @@ jobs:
               run: |
                   cd ./dev/
                   make vendor/autoload.php
-            - name: Update environment
-              run: |
-                  cd ./dev/
-                  rm .env
-                  touch .env
-                  echo "APP_ENV=dev" >> .env
     deploy:
         runs-on: [development]
         needs: [build]

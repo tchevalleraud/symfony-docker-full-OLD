@@ -34,9 +34,9 @@ services:
         environment:
             APP_ENV: dev
         links:
-          - bdd
+            - bdd
         volumes:
-          - .:/var/www
+            - .:/var/www
 volumes:
     db-data:
         driver: local
