@@ -7,15 +7,15 @@ user    := $(shell id -u)
 group   := $(shell id -g)
 
 ifeq ($(APP_ENV), prod)
-	dc := USER_ID=$(user) GROUP_ID=$(group) docker-compose -f docker-compose.prod.yaml
+	dc := USER_ID=$(user) GROUP_ID=$(group) docker-compose -f docker-compose.prod.yaml -p $(app_dir)_$(APP_ENV)
 else ifeq ($(APP_ENV), dev)
-	dc := USER_ID=$(user) GROUP_ID=$(group) docker-compose -f docker-compose.dev.yaml
+	dc := USER_ID=$(user) GROUP_ID=$(group) docker-compose -f docker-compose.dev.yaml -p $(app_dir)_$(APP_ENV)
 else ifeq ($(APP_ENV), test)
-	dc := USER_ID=$(user) GROUP_ID=$(group) docker-compose -f docker-compose.test.yaml
+	dc := USER_ID=$(user) GROUP_ID=$(group) docker-compose -f docker-compose.test.yaml -p $(app_dir)_$(APP_ENV)
 endif
 
-dr      := $(dc) -p $(app_dir)_$(APP_ENV) run --rm
-de      := $(dc) -p $(app_dir)_$(APP_ENV) exec
+dr      := $(dc) run --rm
+de      := $(dc) exec
 
 php         := $(dr) --no-deps php
 sy          := $(php) php bin/console
@@ -39,10 +39,10 @@ docker-build:
 	$(dc) build
 
 server-start:
-	$(dc) -p $(app_dir)_$(APP_ENV) up -d
+	$(dc) up -d
 
 server-stop:
-	$(dc) -p $(app_dir)_$(APP_ENV) down
+	$(dc) down
 
 # ------------------------
 # Dependances
