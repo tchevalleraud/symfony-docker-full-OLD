@@ -52,6 +52,14 @@ doctrine-database-create:
 	$(sy) doctrine:database:create -c local
 	$(sy) doctrine:schema:update --force --em mysql
 
+public/assets:
+	$(node) yarn
+	$(node) yarn run build
+
+public/assets-dev:
+	$(node) yarn
+	$(node) yarn run dev
+
 vendor/autoload.php:
 	$(php) composer update
 	touch vendor/autoload.php

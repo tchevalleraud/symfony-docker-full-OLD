@@ -46,6 +46,7 @@ jobs:
               run: |
                   cd ./prod/
                   make vendor/autoload.php
+                  make public/assets
             - name: Update environment
               run: |
                   cd ./prod/
@@ -60,7 +61,7 @@ jobs:
               run: |
                   cd ./prod/
                   make server-start
-                  sleep 60
+                  sleep 30
             - name: Database deployment
               run: |
                   cd ./prod/
