@@ -9,12 +9,14 @@ Encore
     .setPublicPath('/assets')
     .enableVersioning()
     //.addStyleEntry('custom', './assets/sass/custom.scss')
-    /*
     .copyFiles({
         from: './assets/css',
         to: 'css/[path][name].[ext]'
     })
-    */
+    .copyFiles({
+        from: './assets/js',
+        to: 'js/[path][name].[ext]'
+    })
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()
