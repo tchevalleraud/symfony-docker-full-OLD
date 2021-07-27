@@ -17,6 +17,7 @@ endif
 dr      := $(dc) run --rm
 de      := $(dc) exec
 
+node        := $(dr) node
 php         := $(dr) --no-deps php
 sy          := $(php) php bin/console
 
