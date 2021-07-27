@@ -62,7 +62,7 @@ public/assets-dev:
 	$(node) yarn run dev
 
 vendor/autoload.php:
-	$(php) composer update
+	$(php) composer update -w
 	touch vendor/autoload.php
 
 # ------------------------
