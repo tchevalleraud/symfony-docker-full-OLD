@@ -20,7 +20,8 @@ ARG USER_ID
 ARG GROUP_ID
 
 RUN groupadd -f --gid $GROUP_ID user
-RUN useradd -u $USER_ID -ms /bin/bash -g user user
+# RUN useradd -u $USER_ID -ms /bin/bash -g user user
+RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID user
 USER user
 
 WORKDIR /var/www
