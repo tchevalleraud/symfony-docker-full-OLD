@@ -70,10 +70,10 @@ vendor/autoload.php:
 # Tests
 # ------------------------
 test-unit-all:
-	$(panther) ./bin/phpunit
+	$(panther) ./vendor/bin/phpunit
 
 test-unit-globals:
-	$(panther) ./bin/phpunit --testsuite Globals
+	$(panther) ./vendor/bin/phpunit --testsuite Globals
 
 test-unit-frontoffice:
-	$(panther) ./bin/phpunit --testsuite FrontOffice
+	$(panther) ./vendor/bin/phpunit --testsuite FrontOffice
