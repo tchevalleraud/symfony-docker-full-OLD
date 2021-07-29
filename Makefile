@@ -69,6 +69,9 @@ vendor/autoload.php: composer.lock
 # ------------------------
 # Tests
 # ------------------------
+test-codecov:
+	$(panther) ./vendor/bin/phpunit --exclude-group Screenshot --coverage-clover coverage.xml
+
 test-screenshot:
 	$(panther) ./vendor/bin/phpunit --testsuite Screenshot
 

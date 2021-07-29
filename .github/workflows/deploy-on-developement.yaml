@@ -80,6 +80,22 @@ jobs:
               run: |
                   cd ./dev/
                   make test-unit-frontoffice
+    codecov:
+        runs-on: [development]
+        needs: [tests-globals, tests-frontoffice]
+        steps:
+            - name: Remove previous report
+              run: |
+                  cd ./dev/
+                  rm -Rf coverage.xml
+            - name: UnitTest
+              run: |
+                  cd ./dev/
+                  make test-codecov
+            - name: Upload report
+              run: |
+                  cd ./dev/
+                  bash <(curl -s https://codecov.io/bash)
     screenshot:
         runs-on: [development]
         needs: [tests-globals, tests-frontoffice]
