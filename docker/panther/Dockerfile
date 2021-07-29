@@ -16,11 +16,16 @@ RUN wget -q https://github.com/mozilla/geckodriver/releases/download/v$GECKODRIV
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install mysqli pdo_mysql
 
-RUN apk --update --no-cache add autoconf g++ make && \
-    pecl install -f xdebug && \
-    docker-php-ext-enable xdebug && \
-    apk del --purge autoconf g++ make
-ADD xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+RUN docker-php-source extract \
+    && pecl install opcache xdebug redis mongodb apcu \
+    && echo "xdebug.remote_enable=on\n" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_autostart=on\n" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_port=9000\n" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_handler=dbgp\n" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.remote_connect_back=1\n" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && docker-php-ext-enable opcache xdebug redis mongodb apcu \
+    && docker-php-source delete \
+    && rm -rf /tmp/*
 
 ARG USER_ID
 ARG GROUP_ID
