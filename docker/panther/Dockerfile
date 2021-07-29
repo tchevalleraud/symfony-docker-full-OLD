@@ -16,7 +16,10 @@ RUN wget -q https://github.com/mozilla/geckodriver/releases/download/v$GECKODRIV
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install mysqli pdo_mysql
 
-RUN apk add php-xdebug
+RUN apk --update --no-cache add autoconf g++ make && \
+    pecl install -f xdebug && \
+    docker-php-ext-enable xdebug && \
+    apk del --purge autoconf g++ make
 
 ARG USER_ID
 ARG GROUP_ID
