@@ -10,7 +10,7 @@
 
         public function test_EN_Index(){
             $client = $this->getPantherClient();
-            $this->takeScreenshot($client, "/en/dashboard.html", "en_dashboard.html");
+            $this->takeScreenshot($client, "/en/dashboard.html", "en_dashboard.jpg");
         }
 
     }

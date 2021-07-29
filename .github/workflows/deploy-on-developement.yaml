@@ -84,6 +84,10 @@ jobs:
         runs-on: [development]
         needs: [tests-globals, tests-frontoffice]
         steps:
+            - name: Remove screenshot directory
+              run: |
+                  cd ./dev/
+                  rm -Rf ./screenshot/
             - name: Screenshot
               run: |
                   cd ./dev/
