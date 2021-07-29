@@ -62,8 +62,8 @@ public/assets-dev:
 	$(node) yarn
 	$(node) yarn run dev
 
-vendor/autoload.php:
-	$(php) composer update -w
+vendor/autoload.php: composer.lock
+	$(php) composer update
 	touch vendor/autoload.php
 
 # ------------------------
