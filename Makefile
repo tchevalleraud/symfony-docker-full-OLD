@@ -69,6 +69,9 @@ vendor/autoload.php: composer.lock
 # ------------------------
 # Tests
 # ------------------------
+test-screenshot:
+	$(panther) ./vendor/bin/phpunit --testsuite Screenshot
+
 test-unit-all:
 	$(panther) ./vendor/bin/phpunit
 

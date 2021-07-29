@@ -17,6 +17,9 @@
             <directory>tests/UI/FrontOffice/Controller</directory>
             <directory>tests/UI/FrontOffice/Panther</directory>
         </testsuite>
+        <testsuite name="Screenshot">
+            <directory>tests/Screenshot/FrontOffice</directory>
+        </testsuite>
     </testsuites>
 
     <coverage processUncoveredFiles="true">

@@ -80,3 +80,16 @@ jobs:
               run: |
                   cd ./dev/
                   make test-unit-frontoffice
+    screenshot:
+        runs-on: [development]
+        needs: [tests-globals, tests-frontoffice]
+        steps:
+            - name: Screenshot
+              run: |
+                  cd ./dev/
+                  make test-screenshot
+            - name: Upload artifact
+              uses: actions/upload-artifact@v2
+              with:
+                  name: Screenshot
+                  path: ./dev/screenshot/
