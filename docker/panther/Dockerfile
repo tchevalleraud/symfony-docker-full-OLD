@@ -20,6 +20,7 @@ RUN apk --update --no-cache add autoconf g++ make && \
     pecl install -f xdebug && \
     docker-php-ext-enable xdebug && \
     apk del --purge autoconf g++ make
+ADD xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 ARG USER_ID
 ARG GROUP_ID
