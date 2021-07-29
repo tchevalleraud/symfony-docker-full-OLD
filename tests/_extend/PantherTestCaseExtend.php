@@ -24,7 +24,7 @@
 
         private function takeScreenshotSize(Client $client, $request = "/", $name = "root.png", $type = "pc", $width = 1920, $height = 1080){
             $client->manage()->window()->setSize(new WebDriverDimension($width, $height));
-            $client->request($request);
+            $client->request('GET', $request);
 
             $this->assertStringContainsString($request, $client->getCurrentURL());
 
