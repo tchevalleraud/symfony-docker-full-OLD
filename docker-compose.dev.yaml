@@ -33,6 +33,17 @@ services:
         volumes:
           - .:/usr/src/app
         working_dir: /usr/src/app
+    panther:
+        build:
+            context: ./docker/panther
+            args:
+                USER_ID: ${USER_ID}
+                GROUP_ID: ${GROUP_ID}
+        dns:
+          - 8.8.8.8
+          - 8.8.4.4
+        volumes:
+          - .:/var/www
     php:
         build:
             context: ./docker/php

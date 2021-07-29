@@ -64,10 +64,19 @@ jobs:
               run: |
                   cd ./dev/
                   make cache-clear
-    tests:
+    tests-globals:
         runs-on: [development]
         needs: [deploy]
         steps:
             - name: UnitTest
               run: |
                   cd ./dev/
+                  make test-unit-globals
+    tests-frontoffice:
+        runs-on: [development]
+        needs: [deploy]
+        steps:
+            - name: UnitTest
+              run: |
+                  cd ./dev/
+                  make test-unit-frontoffice

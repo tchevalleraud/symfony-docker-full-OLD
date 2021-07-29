@@ -20,7 +20,10 @@
 ###< symfony/phpunit-bridge ###
 
 ###> phpunit/phpunit ###
+/drivers/
 /phpunit.xml
+/screenshot/
+/report.xml
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 

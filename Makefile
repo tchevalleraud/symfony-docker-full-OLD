@@ -17,9 +17,10 @@ endif
 dr      := $(dc) run --rm
 de      := $(dc) exec
 
-node        := $(dr) node
-php         := $(dr) --no-deps php
-sy          := $(php) php bin/console
+node    := $(dr) node
+panther := $(dr) panther
+php     := $(dr) --no-deps php
+sy      := $(php) php bin/console
 
 # ------------------------
 # Default
@@ -68,3 +69,11 @@ vendor/autoload.php:
 # ------------------------
 # Tests
 # ------------------------
+test-unit-all:
+	$(panther) ./bin/phpunit
+
+test-unit-globals:
+	$(panther) ./bin/phpunit --testsuite Globals
+
+test-unit-frontoffice:
+	$(panther) ./bin/phpunit --testsuite FrontOffice
