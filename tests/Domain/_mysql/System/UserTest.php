@@ -20,4 +20,16 @@
             $this->assertHasErrors($this->getEntity(), 0);
         }
 
+        /**
+         * Email Tests
+         */
+        public function test_ValidEntity_Email(){
+            $this->assertHasErrors($this->getEntity()->setEmail("tchevalleraud@gmail.com"), 0);
+            $this->assertHasErrors($this->getEntity()->setEmail("t.chevalleraud@gmail.com"), 0);
+        }
+
+        public function test_InvalidEntity_Email_NotBlank(){
+            $this->assertHasErrors($this->getEntity()->setEmail(null), 1);
+        }
+
     }
