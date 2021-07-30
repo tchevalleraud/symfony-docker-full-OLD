@@ -12,6 +12,7 @@
     <testsuites>
         <testsuite name="Globals">
             <file>tests/AppTest.php</file>
+            <directory>tests/UI/_defualt/Controller</directory>
         </testsuite>
         <testsuite name="FrontOffice">
             <directory>tests/UI/FrontOffice/Controller</directory>
