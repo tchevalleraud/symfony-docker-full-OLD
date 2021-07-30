@@ -17,6 +17,9 @@ RUN apt-get update && apt-get install -y ffmpeg
 
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 
+ADD ./xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+ADD ./error_reporting.ini /usr/local/etc/php/conf.d/error_reporting.ini
+
 ARG USER_ID
 ARG GROUP_ID
 
