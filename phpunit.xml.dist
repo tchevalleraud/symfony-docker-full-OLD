@@ -14,6 +14,9 @@
             <file>tests/AppTest.php</file>
             <directory>tests/UI/_default/Controller</directory>
         </testsuite>
+        <testsuite name="Domain">
+            <directory>tests/Domain</directory>
+        </testsuite>
         <testsuite name="FrontOffice">
             <directory>tests/UI/FrontOffice/Controller</directory>
             <directory>tests/UI/FrontOffice/Panther</directory>

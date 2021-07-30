@@ -78,6 +78,9 @@ test-screenshot:
 test-unit-all:
 	$(panther) ./vendor/bin/phpunit
 
+test-unit-domain:
+	$(panther) ./vendor/bin/phpunit --testsuite Domain
+
 test-unit-globals:
 	$(panther) ./vendor/bin/phpunit --testsuite Globals
 

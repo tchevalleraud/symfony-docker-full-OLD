@@ -72,6 +72,14 @@ jobs:
               run: |
                   cd ./dev/
                   make test-unit-globals
+    tests-domain:
+        runs-on: [development]
+        needs: [deploy]
+        steps:
+            - name: UnitTest
+              run: |
+                  cd ./dev/
+                  make test-unit-domain
     tests-frontoffice:
         runs-on: [development]
         needs: [deploy]
@@ -82,7 +90,7 @@ jobs:
                   make test-unit-frontoffice
     codacy:
         runs-on: [development]
-        needs: [tests-globals, tests-frontoffice]
+        needs: [tests-globals, tests-domain, tests-frontoffice]
         steps:
             - name: Remove previous report
               run: |
@@ -98,7 +106,7 @@ jobs:
                   bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage.xml --project-token ${{ secrets.CODACY_PROJECT_TOKEN }}
     codecov:
         runs-on: [development]
-        needs: [tests-globals, tests-frontoffice]
+        needs: [tests-globals, tests-domain, tests-frontoffice]
         steps:
             - name: Remove previous report
               run: |
@@ -114,7 +122,7 @@ jobs:
                   CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }} bash <(curl -s https://codecov.io/bash)
     screenshot:
         runs-on: [development]
-        needs: [tests-globals, tests-frontoffice]
+        needs: [tests-globals, tests-domain, tests-frontoffice]
         steps:
             - name: Remove screenshot directory
               run: |
