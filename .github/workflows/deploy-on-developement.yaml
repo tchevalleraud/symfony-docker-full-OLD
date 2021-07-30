@@ -80,6 +80,22 @@ jobs:
               run: |
                   cd ./dev/
                   make test-unit-frontoffice
+    codacy:
+        runs-on: [development]
+        needs: [tests-globals, tests-frontoffice]
+        steps:
+            - name: Remove previous report
+              run: |
+                  cd ./dev/
+                  rm -Rf coverage.xml
+            - name: UnitTest
+              run: |
+                  cd ./dev/
+                  make test-codecoverage
+            - name: Upload report
+              run: |
+                  cd ./dev/
+                  bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage.xml
     codecov:
         runs-on: [development]
         needs: [tests-globals, tests-frontoffice]
@@ -91,7 +107,7 @@ jobs:
             - name: UnitTest
               run: |
                   cd ./dev/
-                  make test-codecov
+                  make test-codecoverage
             - name: Upload report
               run: |
                   cd ./dev/
