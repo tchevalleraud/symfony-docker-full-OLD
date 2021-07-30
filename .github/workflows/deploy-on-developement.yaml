@@ -95,8 +95,7 @@ jobs:
             - name: Upload report
               run: |
                   cd ./dev/
-                  export CODACY_PROJECT_TOKEN=${{ env.CODACY_PROJECT_TOKEN }}
-                  bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage.xml
+                  bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage.xml --project-token ${{ env.CODACY_PROJECT_TOKEN }}
     codecov:
         runs-on: [development]
         needs: [tests-globals, tests-frontoffice]
