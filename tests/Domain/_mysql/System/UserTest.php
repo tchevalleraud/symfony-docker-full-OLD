@@ -37,7 +37,7 @@
          */
         public function test_ValidEntity_Password(){
             $this->assertHasErrors($this->getEntity()->setPassword("Alpha1234!"), 0);
-            $this->assertHasErrors($this->getEntity()->setPassword("?!@xY%i#=siRg_L*"), 0);
+            $this->assertHasErrors($this->getEntity()->setPassword("^#QL]_r4Gry?op*noVez"), 0);
         }
 
         public function test_InvalidEntity_Password(){
