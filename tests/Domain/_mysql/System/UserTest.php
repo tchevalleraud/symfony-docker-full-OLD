@@ -32,4 +32,22 @@
             $this->assertHasErrors($this->getEntity()->setEmail(null), 1);
         }
 
+        /**
+         * Password Tests
+         */
+        public function test_ValidEntity_Password(){
+            $this->assertHasErrors($this->getEntity()->setPassword("Alpha1234!"), 0);
+            $this->assertHasErrors($this->getEntity()->setPassword("?!@xY%i#=siRg_L*"), 0);
+        }
+
+        public function test_InvalidEntity_Password(){
+            $this->assertHasErrors($this->getEntity()->setPassword("1234567"), 2);
+            $this->assertHasErrors($this->getEntity()->setPassword("123456789"), 1);
+            $this->assertHasErrors($this->getEntity()->setPassword("AbCd"), 2);
+        }
+
+        public function test_InvalidEntity_Password_NotBlank(){
+            $this->assertHasErrors($this->getEntity()->setPassword(null), 1);
+        }
+
     }

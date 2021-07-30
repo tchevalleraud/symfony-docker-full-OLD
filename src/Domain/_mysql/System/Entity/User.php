@@ -27,6 +27,19 @@
 
         /**
          * @ORM\Column(type="string")
+         * @Assert\Length(
+         *     min="8",
+         *     max="32",
+         *     minMessage="your password must be at least {{ limit }} characters long",
+         *     maxMessage="your password connot be longer than {{ limit }} characters",
+         *     allowEmptyString=false
+         * )
+         * @Assert\NotBlank()
+         * @Assert\Regex(
+         *     pattern="/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[0-9])[a-zA-Z0-9[:punct:]]{8,32}$/",
+         *     match=true,
+         *     message="your password is not securized"
+         * )
          */
         private $password;
 
@@ -122,8 +135,7 @@
             return $this->email;
         }
 
-
         public function __call($name, $arguments){
-            // TODO: Implement @method string getUserIdentifier()
         }
+
     }
