@@ -15,7 +15,7 @@ RUN wget https://get.symfony.com/cli/installer -O - | bash && mv /root/.symfony/
 RUN curl -L https://github.com/fabpot/local-php-security-checker/releases/download/v${PHP_SECURITY_CHECHER_VERSION}/local-php-security-checker_${PHP_SECURITY_CHECHER_VERSION}_linux_$(dpkg --print-architecture) --output /usr/local/bin/local-php-security-checker && chmod +x /usr/local/bin/local-php-security-checker
 RUN apt-get update && apt-get install -y ffmpeg
 
-RUN printf '%s%s' ";" "$(cat /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini)" > "/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 ARG USER_ID
 ARG GROUP_ID
