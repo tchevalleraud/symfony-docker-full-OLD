@@ -16,6 +16,11 @@ RUN wget -q https://github.com/mozilla/geckodriver/releases/download/v$GECKODRIV
 RUN docker-php-ext-install pdo
 RUN docker-php-ext-install mysqli pdo_mysql
 
+RUN pecl install xdebug && docker-php-ext-enable xdebug
+
+ADD ./xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+ADD ./error_reporting.ini /usr/local/etc/php/conf.d/error_reporting.ini
+
 ARG USER_ID
 ARG GROUP_ID
 
