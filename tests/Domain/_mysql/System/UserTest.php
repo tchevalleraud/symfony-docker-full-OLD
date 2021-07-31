@@ -21,11 +21,22 @@
         }
 
         /**
+         * Id Tests
+         */
+        public function test_ValidEntity_Id(){
+            $id = $this->getEntity()->getId();
+            $this->assertEquals($this->getEntity()->getId(), $id);
+        }
+
+        /**
          * Email Tests
          */
         public function test_ValidEntity_Email(){
             $this->assertHasErrors($this->getEntity()->setEmail("tchevalleraud@gmail.com"), 0);
+            $this->assertEquals($this->getEntity()->getEmail(), "tchevalleraud@gmail.com");
+
             $this->assertHasErrors($this->getEntity()->setEmail("t.chevalleraud@gmail.com"), 0);
+            $this->assertEquals($this->getEntity()->getEmail(), "t.chevalleraud@gmail.com");
         }
 
         public function test_InvalidEntity_Email_NotBlank(){
