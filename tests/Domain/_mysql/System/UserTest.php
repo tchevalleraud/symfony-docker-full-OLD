@@ -9,6 +9,16 @@
 
         use EntityTestCaseExtend;
 
+        /**
+         * @var \Doctrine\ORM\EntityManager
+         */
+        private $entityManager;
+
+        protected function setUp(): void{
+            $kernel = self::bootKernel();
+            $this->entityManager = $kernel->getContainer()->get('doctrine')->getManager();
+        }
+
         private function getEntity(): User {
             $user = (new User())
                 ->setEmail("admin@pwsb.fr")
@@ -18,6 +28,13 @@
 
         public function test_ValidEntity(){
             $this->assertHasErrors($this->getEntity(), 0);
+        }
+
+        public function test_ValidEntity_Repository(){
+            $user = $this->entityManager
+                ->getRepository(User::class)
+                ->findOneBy(['email' => 'admin@test.pwsb.fr']);
+            $this->assertEquals("admin@test.pwsb.fr", $user->getEmail());
         }
 
         /**
