@@ -47,8 +47,11 @@
          * Password Tests
          */
         public function test_ValidEntity_Password(){
-            $this->assertHasErrors($this->getEntity()->setPassword("Alpha1234!"), 0);
-            $this->assertHasErrors($this->getEntity()->setPassword("^#QL]_r4Gry?op*noVez"), 0);
+            $this->assertHasErrors($user = $this->getEntity()->setPassword("Alpha1234!"), 0);
+            $this->assertEquals($user->getPassword(), "Alpha1234!");
+
+            $this->assertHasErrors($user = $this->getEntity()->setPassword("^#QL]_r4Gry?op*noVez"), 0);
+            $this->assertEquals($user->getPassword(), "^#QL]_r4Gry?op*noVez");
         }
 
         public function test_InvalidEntity_Password(){
@@ -59,6 +62,17 @@
 
         public function test_InvalidEntity_Password_NotBlank(){
             $this->assertHasErrors($this->getEntity()->setPassword(null), 1);
+        }
+
+        /**
+         * Role Tests
+         */
+        public function test_ValidEntity_Role(){
+            $this->assertHasErrors($user = $this->getEntity()->addRole("ROLE_TEST"), 0);
+            $this->assertIsArray($user->getRoles());
+
+            $this->assertHasErrors($user = $this->getEntity()->setRoles(['ROLE_USER', 'ROLE_TEST']), 0);
+            $this->assertIsArray($user->getRoles());
         }
 
     }

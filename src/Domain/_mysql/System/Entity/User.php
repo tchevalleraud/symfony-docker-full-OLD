@@ -85,8 +85,17 @@
             return $this;
         }
 
-        public function getRoles(): array{
-            return $this->roles;
+        public function getRoles(): array {
+            $roles = $this->roles;
+            $roles[] = "ROLE_USER";
+            return array_unique($this->roles);
+        }
+
+        public function addRole(string $role): self {
+            $roles = $this->roles;
+            $roles[] = $role;
+            $this->roles = array_unique($roles);
+            return $this;
         }
 
         public function setRoles(array $roles): self {
