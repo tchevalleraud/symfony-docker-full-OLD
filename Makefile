@@ -56,7 +56,7 @@ doctrine-database-create:
 
 doctrine-database-drop:
 	$(sy) doctrine:database:drop -c mysql --force --if-exists
-	$(sy) doctrine:database:drop -c local --force --if-exists
+	$(sy) doctrine:database:drop -c local --force
 
 doctrine-fixtures-load:
 	$(sy) doctrine:fixtures:load -q  -n
