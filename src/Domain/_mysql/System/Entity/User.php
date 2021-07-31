@@ -63,6 +63,12 @@
          */
         private $deleted;
 
+        public function __construct(){
+            $this->locked   = false;
+            $this->enabled  = true;
+            $this->deleted  = false;
+        }
+
         public function getId(){
             return $this->id;
         }
