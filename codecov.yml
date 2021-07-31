@@ -1,2 +1,3 @@
 ignore:
     - "src/Kernel.php"
+    - "src/Domain/_mysql/System/Fixtures/"
