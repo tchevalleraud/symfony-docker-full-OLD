@@ -54,6 +54,13 @@ doctrine-database-create:
 	$(sy) doctrine:database:create -c local
 	$(sy) doctrine:schema:update --force --em mysql
 
+doctrine-database-drop:
+	$(sy) doctrine:database:drop -c mysql --force --if-exists
+	$(sy) doctrine:database:drop -c local --force --if-exists
+
+doctrine-fixtures-load:
+	$(sy) doctrine:fixtures:load -q  -n
+
 public/assets:
 	$(node) yarn
 	$(node) yarn run build

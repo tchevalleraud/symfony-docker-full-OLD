@@ -13,3 +13,13 @@
 ## About this project
 
 ## Configure project
+
+## Code cover
+
+<a href="https://codecov.io/gh/tchevalleraud/symfony-docker-full">
+<img src="https://codecov.io/gh/tchevalleraud/symfony-docker-full/branch/master/graphs/commits.svg"/>
+</a><br/>
+<br/>
+<a href="https://codecov.io/gh/tchevalleraud/symfony-docker-full">
+<img src="https://codecov.io/gh/tchevalleraud/symfony-docker-full/branch/master/graphs/sunburst.svg"/>
+</a>
