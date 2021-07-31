@@ -1,2 +1,2 @@
 ignore:
-    - "/src/Kernel.php"
+    - "src/Kernel.php"
