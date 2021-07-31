@@ -75,4 +75,43 @@
             $this->assertIsArray($user->getRoles());
         }
 
+        /**
+         * Locked Tests
+         */
+        public function test_ValidEntity_Locked(){
+            $this->assertHasErrors($user = $this->getEntity()->setLocked(true), 0);
+            $this->assertIsBool($user->getLocked());
+            $this->assertEquals($user->getLocked(), true);
+
+            $this->assertHasErrors($user = $this->getEntity()->setLocked(false), 0);
+            $this->assertIsBool($user->getLocked());
+            $this->assertEquals($user->getLocked(), false);
+        }
+
+        /**
+         * Enabled Tests
+         */
+        public function test_ValidEntity_Enabled(){
+            $this->assertHasErrors($user = $this->getEntity()->setEnabled(true), 0);
+            $this->assertIsBool($user->getEnabled());
+            $this->assertEquals($user->getEnabled(), true);
+
+            $this->assertHasErrors($user = $this->getEntity()->setEnabled(false), 0);
+            $this->assertIsBool($user->getEnabled());
+            $this->assertEquals($user->getEnabled(), false);
+        }
+
+        /**
+         * Deleted Tests
+         */
+        public function test_ValidEntity_Deleted(){
+            $this->assertHasErrors($user = $this->getEntity()->setDeleted(true), 0);
+            $this->assertIsBool($user->getDeleted());
+            $this->assertEquals($user->getDeleted(), true);
+
+            $this->assertHasErrors($user = $this->getEntity()->setDeleted(false), 0);
+            $this->assertIsBool($user->getDeleted());
+            $this->assertEquals($user->getDeleted(), false);
+        }
+
     }
