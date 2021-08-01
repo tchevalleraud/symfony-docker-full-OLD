@@ -9,16 +9,6 @@
 
         use EntityTestCaseExtend;
 
-        /**
-         * @var \Doctrine\ORM\EntityManager
-         */
-        private $entityManager;
-
-        protected function setUp(): void{
-            $kernel = self::bootKernel();
-            $this->entityManager = $kernel->getContainer()->get('doctrine')->getManager();
-        }
-
         private function getEntity(): User {
             $user = (new User())
                 ->setEmail("admin@pwsb.fr")

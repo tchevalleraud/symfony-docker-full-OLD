@@ -4,6 +4,7 @@
     use App\Domain\_mysql\System\Entity\User;
     use Doctrine\Bundle\FixturesBundle\Fixture;
     use Doctrine\Persistence\ObjectManager;
+    use Faker\Factory;
     use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
     class UserFixtures extends Fixture {
@@ -15,7 +16,13 @@
         }
 
         public function load(ObjectManager $manager){
+            $faker = Factory::create("fr_FR");
+
             $manager->persist($this->newUser("admin@test.pwsb.fr", "P@assword1!"));
+            $manager->persist($this->newUser($faker->email(), $faker->password()));
+            $manager->persist($this->newUser($faker->email(), $faker->password()));
+            $manager->persist($this->newUser($faker->email(), $faker->password()));
+            $manager->persist($this->newUser($faker->email(), $faker->password()));
             $manager->flush();
         }
 

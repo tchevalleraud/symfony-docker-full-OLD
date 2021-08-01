@@ -5,6 +5,16 @@
 
     trait EntityTestCaseExtend {
 
+        /**
+         * @var \Doctrine\ORM\EntityManager
+         */
+        private $entityManager;
+
+        protected function setUp(): void{
+            $kernel = self::bootKernel();
+            $this->entityManager = $kernel->getContainer()->get('doctrine')->getManager();
+        }
+
         private function assertHasErrors($entity, int $number = 0){
             self::bootKernel();
 
