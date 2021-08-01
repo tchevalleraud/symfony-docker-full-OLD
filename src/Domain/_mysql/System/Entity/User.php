@@ -109,7 +109,7 @@
             return $this;
         }
 
-        public function getLocked(){
+        public function isLocked(){
             return $this->locked;
         }
 
@@ -118,7 +118,7 @@
             return $this;
         }
 
-        public function getEnabled(){
+        public function isEnabled(){
             return $this->enabled;
         }
 
@@ -127,7 +127,7 @@
             return $this;
         }
 
-        public function getDeleted(){
+        public function isDeleted(){
             return $this->deleted;
         }
 
@@ -139,6 +139,8 @@
         /***************************************************************************************************************
          * CUSTOM FUNCTION
          */
+        public function __call($name, $arguments){
+        }
 
         public function getSalt(){
         }
@@ -150,7 +152,8 @@
             return $this->email;
         }
 
-        public function __call($name, $arguments){
+        public function isExpired(){
+            return false;
         }
 
     }

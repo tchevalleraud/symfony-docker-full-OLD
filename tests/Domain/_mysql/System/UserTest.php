@@ -87,12 +87,12 @@
          */
         public function test_ValidEntity_Locked(){
             $this->assertHasErrors($user = $this->getEntity()->setLocked(true), 0);
-            $this->assertIsBool($user->getLocked());
-            $this->assertEquals($user->getLocked(), true);
+            $this->assertIsBool($user->isLocked());
+            $this->assertEquals($user->isLocked(), true);
 
             $this->assertHasErrors($user = $this->getEntity()->setLocked(false), 0);
-            $this->assertIsBool($user->getLocked());
-            $this->assertEquals($user->getLocked(), false);
+            $this->assertIsBool($user->isLocked());
+            $this->assertEquals($user->isLocked(), false);
         }
 
         /**
@@ -100,12 +100,12 @@
          */
         public function test_ValidEntity_Enabled(){
             $this->assertHasErrors($user = $this->getEntity()->setEnabled(true), 0);
-            $this->assertIsBool($user->getEnabled());
-            $this->assertEquals($user->getEnabled(), true);
+            $this->assertIsBool($user->isEnabled());
+            $this->assertEquals($user->isEnabled(), true);
 
             $this->assertHasErrors($user = $this->getEntity()->setEnabled(false), 0);
-            $this->assertIsBool($user->getEnabled());
-            $this->assertEquals($user->getEnabled(), false);
+            $this->assertIsBool($user->isEnabled());
+            $this->assertEquals($user->isEnabled(), false);
         }
 
         /**
@@ -113,12 +113,12 @@
          */
         public function test_ValidEntity_Deleted(){
             $this->assertHasErrors($user = $this->getEntity()->setDeleted(true), 0);
-            $this->assertIsBool($user->getDeleted());
-            $this->assertEquals($user->getDeleted(), true);
+            $this->assertIsBool($user->isDeleted());
+            $this->assertEquals($user->isDeleted(), true);
 
             $this->assertHasErrors($user = $this->getEntity()->setDeleted(false), 0);
-            $this->assertIsBool($user->getDeleted());
-            $this->assertEquals($user->getDeleted(), false);
+            $this->assertIsBool($user->isDeleted());
+            $this->assertEquals($user->isDeleted(), false);
         }
 
     }
