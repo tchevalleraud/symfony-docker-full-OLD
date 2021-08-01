@@ -1,18 +1,30 @@
 security:
+    access_control:
+        - { path: ^/en/logout.html$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/fr/deconnexion.html$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/en/login.html$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/fr/connexion.html$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_USER }
+
     enable_authenticator_manager: true
+
     encoders:
         App\Domain\_mysql\System\Entity\User:
             algorithm: auto
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            lazy: true
-            provider: users_in_memory
-    access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+            guard:
+                authenticators:
+                    - App\Application\Security\AppAuthenticator
+            logout:
+                path: app.security.logout
+            provider: system_user_email_provider
+            user_checker: App\Application\Security\UserChecker
+
     providers:
         system_user_email_provider:
             entity:

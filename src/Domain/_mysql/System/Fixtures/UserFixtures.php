@@ -19,10 +19,11 @@
             $faker = Factory::create("fr_FR");
 
             $manager->persist($this->newUser("admin@test.pwsb.fr", "P@assword1!"));
-            $manager->persist($this->newUser($faker->email(), $faker->password()));
-            $manager->persist($this->newUser($faker->email(), $faker->password()));
-            $manager->persist($this->newUser($faker->email(), $faker->password()));
-            $manager->persist($this->newUser($faker->email(), $faker->password()));
+            $manager->persist($this->newUser($faker->safeEmail(), $faker->password()));
+            $manager->persist($this->newUser($faker->safeEmail(), $faker->password()));
+            $manager->persist($this->newUser($faker->safeEmail(), $faker->password()));
+            $manager->persist($this->newUser($faker->safeEmail(), $faker->password()));
+
             $manager->flush();
         }
 
