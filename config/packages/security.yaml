@@ -8,7 +8,7 @@ security:
 
     enable_authenticator_manager: true
 
-    encoders:
+    password_hashers:
         App\Domain\_mysql\System\Entity\User:
             algorithm: auto
 
@@ -23,10 +23,9 @@ security:
             logout:
                 path: app.security.logout
             provider: system_user_email_provider
-            user_checker: App\Application\Security\UserChecker
 
     providers:
         system_user_email_provider:
             entity:
                 class: App\Domain\_mysql\System\Entity\User
-        users_in_memory: { memory: null }
+                property: email

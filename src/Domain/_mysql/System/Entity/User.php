@@ -8,7 +8,6 @@
     /**
      * @ORM\Entity(repositoryClass="App\Domain\_mysql\System\Repository\UserRepository")
      * @ORM\Table(name="system_user")
-     * @method string getUserIdentifier()
      */
     class User implements UserInterface {
 
@@ -139,9 +138,6 @@
         /***************************************************************************************************************
          * CUSTOM FUNCTION
          */
-        public function __call($name, $arguments){
-        }
-
         public function getSalt(){
         }
 
@@ -150,6 +146,10 @@
 
         public function getUsername(){
             return $this->email;
+        }
+
+        public function getUserIdentifier(){
+            return $this->getUsername();
         }
 
         public function isExpired(){
